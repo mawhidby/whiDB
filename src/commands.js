@@ -25,17 +25,13 @@ const commands = {
   }
 };
 
-exports.COMMANDS = {
-  SET: 'SET',
-  GET: 'GET',
-  DELETE: 'DELETE',
-  COUNT: 'COUNT',
-  END: 'END',
-  BEGIN: 'BEGIN',
-  ROLLBACK: 'ROLLBACK',
-  COMMIT: 'COMMIT'
-};
-
+/**
+ * Determines whether a provided command and its arguments are valid
+ * @param command The command to perform
+ * @param arg1 First argument to pass to the db functions (e.g., name, value)
+ * @param arg2 Second argument to pass to the db functions (e.g., value)
+ * @returns true if the passed command is valid, else false
+ */
 exports.isValidCommand = function isValidCommand(command, arg1, arg2) {
   if (!commands.hasOwnProperty(command)) return false;
 
@@ -60,3 +56,14 @@ exports.isValidCommand = function isValidCommand(command, arg1, arg2) {
     return false;
   }
 }
+
+exports.COMMANDS = {
+  SET: 'SET',
+  GET: 'GET',
+  DELETE: 'DELETE',
+  COUNT: 'COUNT',
+  END: 'END',
+  BEGIN: 'BEGIN',
+  ROLLBACK: 'ROLLBACK',
+  COMMIT: 'COMMIT'
+};
