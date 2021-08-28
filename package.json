@@ -1,0 +1,22 @@
+{
+  "name": "whidb",
+  "version": "1.0.0",
+  "description": "An in-memory DB written in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mawhidby/whiDB.git"
+  },
+  "author": "Michael Whidby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mawhidby/whiDB/issues"
+  },
+  "homepage": "https://github.com/mawhidby/whiDB#readme",
+  "devDependencies": {
+    "mocha": "^9.1.1"
+  }
+}
