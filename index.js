@@ -1,6 +1,8 @@
 const readline = require('readline');
 const { isValidCommand } = require('./src/commands.js');
-const { executeCommand } = require('./src/database.js');
+const WhiDB = require('./src/database.js');
+
+const database = new WhiDB();
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -19,7 +21,7 @@ rl.on('line', (line) => {
     return;
   }
 
-  executeCommand(command, arg1, arg2);
+  database.executeCommand(command, arg1, arg2);
 
   rl.prompt();
 }).on('close', () => {
