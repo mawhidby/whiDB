@@ -151,6 +151,8 @@ class WhiDB {
     }
   
     this.db = this.applyTransactions();
+    this.transactions = [];
+    this.currentTransactionIndex = -1;
   }
 
   /**

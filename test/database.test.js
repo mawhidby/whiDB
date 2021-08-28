@@ -128,6 +128,17 @@ describe('database.js', function() {
       database = new WhiDB();
       assert.equal(database.commit(), 'TRANSACTION NOT FOUND');
     });
+
+    it('should commit the transactions, and clear open transactions', () => {
+      let transactions = [['SET a foo', 'SET b bar'], ['SET c baz']];
+      database = new WhiDB({}, transactions, 1);
+
+      database.commit();
+      assert.equal(database.getCurrentTransactionIndex(), -1);
+      assert.equal(database.get('a'), 'foo');
+      assert.equal(database.get('b'), 'bar');
+      assert.equal(database.get('c'), 'baz');
+    });
   });
   
 });
