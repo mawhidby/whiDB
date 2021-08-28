@@ -27,6 +27,7 @@ const commands = {
 
 /**
  * Determines whether a provided command and its arguments are valid
+ * Assumption: The arguments are strings, as parsed in by Node's readline
  * @param command The command to perform
  * @param arg1 First argument to pass to the db functions (e.g., name, value)
  * @param arg2 Second argument to pass to the db functions (e.g., value)
