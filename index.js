@@ -1,6 +1,6 @@
 const readline = require('readline');
-const { isValidCommand, COMMANDS } = require('./src/commands.js');
-const { get, set, del, count } = require('./src/database.js');
+const { isValidCommand } = require('./src/commands.js');
+const { executeCommand } = require('./src/database.js');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -11,7 +11,6 @@ const rl = readline.createInterface({
 rl.prompt();
 
 rl.on('line', (line) => {
-  console.log(line);
   const [command, arg1, arg2] = line.split(' ');
 
   if (!isValidCommand(command, arg1, arg2)) {
@@ -20,32 +19,7 @@ rl.on('line', (line) => {
     return;
   }
 
-  switch(command) {
-    case COMMANDS.SET:
-      set(arg1, arg2);
-      break;
-    case COMMANDS.GET:
-      const value = get(arg1);
-      console.log(value);
-      break;
-    case COMMANDS.DELETE:
-      del(arg1);
-      break;
-    case COMMANDS.COUNT:
-      const num = count(arg1);
-      console.log(num);
-      break;
-    case COMMANDS.END:
-      process.exit(0);
-    case COMMANDS.BEGIN:
-      break;
-    case COMMANDS.ROLLBACK:
-      break;
-    case COMMANDS.COMMIT:
-      break;
-    default:
-      break;
-  }
+  executeCommand(command, arg1, arg2);
 
   rl.prompt();
 }).on('close', () => {
